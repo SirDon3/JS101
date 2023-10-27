@@ -6,6 +6,16 @@ const car = {
     toggleHeadLight: function (headLighsStatus){
         this.headLighsOn = headLighsStatus;
     }, 
+    ChangeBrand: function (brandName){
+        this.brand = brandName;
+    },
+    ChangeColour: function (changedColour){
+        this.colour = changedColour;
+    },
+    ChangeType: function (changedType){
+        this.type = changedType;
+    },
+
 };
 
 console.log(car);
