@@ -1,0 +1,15 @@
+{
+  "name": "js101",
+  "version": "1.0.0",
+  "description": "",
+  "main": "html.index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shadhan",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3"
+  }
+}
