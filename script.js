@@ -1,21 +1,19 @@
-const car = {
-    brand: "BMW",
-    colour: "White",
-    type: "Sedan",
-    headLighsOn: false,
-    toggleHeadLight: function (headLighsStatus){
-        this.headLighsOn = headLighsStatus;
-    }, 
-    ChangeBrand: function (brandName){
-        this.brand = brandName;
-    },
-    ChangeColour: function (changedColour){
-        this.colour = changedColour;
-    },
-    ChangeType: function (changedType){
-        this.type = changedType;
-    },
+import Car from "./car.js";
 
-};
 
-console.log(car);
+const myCar = new Car (
+    "BMW",
+    "Blue",
+    "Sedan",
+    true,
+    
+);
+
+console.log(myCar);
+
+console.log("My car's headlight is on:", myCar.headLightsOn);
+myCar.toggleLight(false);
+console.log("My car's headlight is on:", myCar.headLightsOn);
+console.log("This is my Car:", myCar.colour);
+myCar.changeColour("Black");
+console.log("This is my Car:", myCar.colour);
