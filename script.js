@@ -1,26 +1,83 @@
-function trySomething (a, b){
-    let c = a + b;
-    return c
-} 
+/**
+ * Practice: Pass values between functions
+ *
+ * Create two functions:
+ * - Main function
+ *  - Creates new <article> element
+ *  - Populates <article> with content (see const content below)
+ *  - Returns <article> element to where function is called
+ * - Helper image function
+ *  - Creates new <figure> element
+ *  - Adds <img> markup pointing to frogpack.image
+ *  - Adds <figcaption> element with image description
+ *  - Returns <figure> element to where function is called
+ */
 
-function getIteam (name) {
+const frogpack = {
+    name: "Frog Backpack",
+    volume: 8,
+    color: "green",
+    pocketNum: 3,
+    strapLength: {
+      left: 10,
+      right: 10,
+    },
+    lidOpen: false,
+    image: "../assets/images/frog.svg",
+    toggleLid: function (lidStatus) {
+      this.lidOpen = lidStatus;
+    },
+    newStrapLength: function (lengthLeft, lengthRight) {
+      this.strapLength.left = lengthLeft;
+      this.strapLength.right = lengthRight;
+    },
+  };
+  
+  // Baseline HTML output
+  const content = `
+      <h1 class="backpack__name">${frogpack.name}</h1>
+      <ul class="backpack__features">
+        <li class="packprop backpack__volume">Volume:<span> ${
+          frogpack.volume
+        }l</span></li>
+        <li class="packprop backpack__color">Color:<span> ${
+          frogpack.color
+        }</span></li>
+        <li class="packprop backpack__pockets">Number of pockets:<span> ${
+          frogpack.pocketNum
+        }</span></li>
+        <li class="packprop backpack__strap">Left strap length:<span> ${
+          frogpack.strapLength.left
+        } inches</span></li>
+        <li class="packprop backpack__strap">Right strap length:<span> ${
+          frogpack.strapLength.right
+        } inches</span></li>
+        <li class="feature backpack__lid">Lid status:<span> ${
+          frogpack.lidOpen ? "open" : "closed"
+        }</span></li>
+      </ul>  
+  `;
 
-    let newClass = name;
-    let viewIteam = document.querySelector("main").classList.add(newClass);
-    return viewIteam
+const imageFigure = (imageURL, caption) => {
+    let figure = document.createElement("figure");
+    let img = document.createElement("img");
+    img.src = imageURL;
+    let figureCaption = document.createElement("figurecaption");
+    figureCaption.innerHTML = caption
+    figure.append(img, figureCaption);
+    return figure
 
 }
 
-const newMathsTry = function (a, b){
-
-    let c = a * b;
-
-    return c;
-
-
+  
+const newElement = (output, imageURL, caption) => {
+    const article = document.createElement("article");
+    article.innerHTML = output;
+    article.append(imageFigure(imageURL, caption))
+    return article
 }
-console.log("Lets do simple Maths:", trySomething(6, 6))
-getIteam("tryMe")
-console.log("Lets do simple Maths again:", newMathsTry(2, 6))
-console.log(document.querySelector("main"))
 
+const main = document.querySelector("main");
+main.append(newElement(content, frogpack.image, "This is my frog pack"));
+
+console.log(newElement(content, frogpack.image, "This is my frog pack"))
